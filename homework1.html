@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 1</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      #container {
+        width: 500px;
+        margin: 0 auto;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+        text-align: center;
+      }
+      .btns {
+        text-align: center;
+      }
+      input {
+        margin: 1%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DOM Exercise</h1>
+    <div id="container">
+      <ul id="drinks">
+        <li id="drink1">Water</li>
+        <li id="drink2">Tea</li>
+        <li id="drink3">Coffee</li>
+        <li id="drink4">Juice</li>
+        <li id="drink5">Cola</li>
+        <li id="drink6">Fanta</li>
+      </ul>
+      <div id="demo"></div>
+      <div class="btns">
+        <input
+          type="button"
+          value="Choose first drink"
+          onclick="chooseFirstElement()"
+        />
+        <input
+          type="button"
+          value="Choose last drink"
+          onclick="chooseLastElement()"
+        />
+        <input
+          type="button"
+          value="Choose next drink"
+          onclick="chooseNextElement()"
+        />
+        <input
+          type="button"
+          value="Choose previous drink"
+          onclick="choosePreviousElement()"
+        />
+        <input
+          type="button"
+          value="Remove last drink"
+          onclick="removeElement()"
+        />
+        <form>
+          <input type="text" name="input" placeholder="Enter new drink" />
+          <input type="button" value="Add drink" onclick="addNew(this.form)" />
+          <input
+            type="button"
+            value="Add as first drink"
+            onclick="addAsFirst(this.form)"
+          />
+        </form>
+      </div>
+    </div>
+    <script>
+      function chooseFirstElement() {
+        let firstElem = document.getElementById('drinks').firstElementChild;
+        firstElem.style.backgroundColor = 'yellow';
+      }
+
+      function chooseLastElement() {
+        let lastElem = document.getElementById('drinks').lastElementChild;
+        lastElem.style.backgroundColor = 'green';
+      }
+
+      function chooseNextElement() {
+        let nextElem = document.getElementById('drink1').nextElementSibling;
+        nextElem.style.backgroundColor = 'blue';
+      }
+
+      function choosePreviousElement() {
+        let prevElem = document.getElementById('drink6').previousElementSibling;
+        prevElem.style.backgroundColor = 'orange';
+      }
+
+      function removeElement() {
+        let drinksList = document.getElementById('drinks');
+        let lastDrink = drinksList.lastElementChild;
+        drinksList.removeChild(lastDrink);
+      }
+
+      function addNew(form) {
+        let value = form.input.value;
+        if (value) {
+          let newDrink = document.createElement('li');
+          newDrink.innerHTML = value;
+          document.getElementById('drinks').appendChild(newDrink);
+        } else {
+          alert('Please enter new drink');
+        }
+
+        form.input.value = null;
+      }
+
+      function addAsFirst(form) {
+        let value = form.input.value;
+        if (value) {
+          let newDrink = document.createElement('li');
+          newDrink.innerHTML = value;
+
+          let list = document.getElementById('drinks');
+          let firstElem = document.getElementById('drinks').firstElementChild;
+          list.insertBefore(newDrink, firstElem);
+        } else {
+          alert('Please enter new drink');
+        }
+
+        form.input.value = null;
+      }
+    </script>
+  </body>
+</html>
