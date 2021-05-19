@@ -24,40 +24,44 @@
       input {
         margin: 1%;
       }
+      .active {
+        background-color: black;
+        color: white;
+      }
     </style>
   </head>
   <body>
     <h1>DOM Exercise</h1>
     <div id="container">
       <ul id="drinks">
-        <li id="drink1">Water</li>
-        <li id="drink2">Tea</li>
-        <li id="drink3">Coffee</li>
-        <li id="drink4">Juice</li>
-        <li id="drink5">Cola</li>
-        <li id="drink6">Fanta</li>
+        <li>Water</li>
+        <li>Tea</li>
+        <li>Coffee</li>
+        <li>Juice</li>
+        <li>Cola</li>
+        <li>Fanta</li>
       </ul>
       <div id="demo"></div>
       <div class="btns">
         <input
           type="button"
           value="Choose first drink"
-          onclick="chooseFirstElement()"
-        />
-        <input
-          type="button"
-          value="Choose last drink"
-          onclick="chooseLastElement()"
+          onclick="handleClick(this)"
         />
         <input
           type="button"
           value="Choose next drink"
-          onclick="chooseNextElement()"
+          onclick="handleClick(this)"
+        />
+        <input
+          type="button"
+          value="Choose last drink"
+          onclick="handleClick(this)"
         />
         <input
           type="button"
           value="Choose previous drink"
-          onclick="choosePreviousElement()"
+          onclick="handleClick(this)"
         />
         <input
           type="button"
@@ -76,24 +80,44 @@
       </div>
     </div>
     <script>
-      function chooseFirstElement() {
-        let firstElem = document.getElementById('drinks').firstElementChild;
-        firstElem.style.backgroundColor = 'yellow';
-      }
+      function handleClick(clickedBtn) {
+        let list = document.getElementById('drinks');
 
-      function chooseLastElement() {
-        let lastElem = document.getElementById('drinks').lastElementChild;
-        lastElem.style.backgroundColor = 'green';
-      }
+        if (clickedBtn.value === 'Choose first drink') {
+          let firstElem = list.firstElementChild;
+          firstElem.className = 'active';
+        }
 
-      function chooseNextElement() {
-        let nextElem = document.getElementById('drink1').nextElementSibling;
-        nextElem.style.backgroundColor = 'blue';
-      }
+        if (clickedBtn.value === 'Choose last drink') {
+          let lastElem = list.lastElementChild;
+          lastElem.className = 'active';
+        }
 
-      function choosePreviousElement() {
-        let prevElem = document.getElementById('drink6').previousElementSibling;
-        prevElem.style.backgroundColor = 'orange';
+        let activeList = document.getElementsByClassName('active');
+        let index = activeList.length;
+
+        if (clickedBtn.value === 'Choose next drink') {
+          if (index === 0) {
+            let firstElem = list.firstElementChild;
+            firstElem.className = 'active';
+          } else {
+            let nextElem = activeList[index - 1].nextElementSibling;
+            console.log(nextElem);
+            nextElem.className = 'active';
+          }
+        }
+
+        if (clickedBtn.value === 'Choose previous drink') {
+          if (index === 0) {
+            let lastElem = list.lastElementChild;
+            lastElem.className = 'active';
+          } else {
+            let prevElem = activeList[index - 1].previousElementSibling;
+            activeList[index - 1].className = '';
+
+            prevElem.style.backgroundColor = 'grey';
+          }
+        }
       }
 
       function removeElement() {
