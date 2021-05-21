@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Classwork</title>
+    <style type="text/css"></style>
+    <style>
+      #two {
+        cursor: pointer;
+        width: fit-content;
+        transition: all 0.5s ease-in-out;
+      }
+      #two:hover {
+        background-color: green;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="one">one</div>
+
+    <script>
+      let divOne = document.querySelector('#one');
+      divOne.insertAdjacentHTML('afterEnd', '<div>two</div>');
+      let divTwo = document.querySelectorAll('div')[1];
+      divTwo.setAttribute('id', 'two');
+      divTwo.setAttribute('onclick', 'addDiv()');
+
+      function addDiv() {
+        let divTwo = document.querySelector('#two');
+        let divTwoFirst = '<div id="two_first">two first</div>';
+        divTwo.insertAdjacentHTML('beforeBegin', divTwoFirst);
+        divTwo.id = 'two_second';
+      }
+    </script>
+  </body>
+</html>
