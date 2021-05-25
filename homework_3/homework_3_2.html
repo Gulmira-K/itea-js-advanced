@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework_3_2</title>
+  </head>
+  <body>
+    <ul id="list"></ul>
+    <div id="quantity"></div>
+    <script>
+      let list = document.querySelector('#list');
+      let phrase = prompt('Please, enter a phrase of 3 words');
+      let wordsArray = phrase.split(' ');
+
+      list.insertAdjacentHTML(
+        'afterBegin',
+        `<li>${wordsArray[0]}</li><li>${wordsArray[1]}</li><li>${wordsArray[2]}</li>`
+      );
+
+      list.children[0].innerText = wordsArray[0].toUpperCase();
+      list.children[1].innerText = wordsArray[1].toLowerCase();
+      list.children[2].innerText = wordsArray[2].toLowerCase();
+
+      let toBeSearched = 'a';
+      let match = new RegExp(toBeSearched, 'g');
+      let quantity = phrase.match(match).length;
+      document.querySelector(
+        '#quantity'
+      ).innerHTML = `There are ${quantity} ${toBeSearched.toUpperCase()}s in the list`;
+    </script>
+  </body>
+</html>

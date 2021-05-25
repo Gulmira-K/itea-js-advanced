@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework_3_1</title>
+  </head>
+  <body>
+    <h1>Count: <span id="count">0</span></h1>
+
+    <input type="button" value="Start" onclick="startCount()" />
+    <input type="button" value="Stop" onclick="stopCount()" />
+    <input type="button" value="Reset" onclick="resetCount()" />
+    <input type="button" value="Set to 0" onclick="setZero()" />
+
+    <script>
+      let i = 1;
+      let interval;
+
+      function count() {
+        document.querySelector('#count').innerHTML = i++;
+        if (i > 30) clearInterval(interval);
+      }
+
+      function startCount() {
+        interval = setInterval(count, 1000);
+      }
+
+      function stopCount() {
+        clearInterval(interval);
+      }
+
+      function resetCount() {
+        i = 1;
+        interval = setInterval(count, 1000);
+      }
+
+      function setZero() {
+        clearInterval(interval);
+        document.querySelector('#count').innerHTML = 0;
+      }
+    </script>
+  </body>
+</html>
