@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ключевое слово this</title>
+    <style>
+      div {
+        background-color: green;
+        display: inline-block;
+        height: 100px;
+        width: 100px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>Change color</div>
+    <div>Change color</div>
+    <div>Change color</div>
+    <div>Change color</div>
+    <div>Change color</div>
+    <script>
+      const divArr = document.getElementsByTagName('div');
+
+      for (var i = 0; i < divArr.length; i++) {
+        divArr[i].onmouseenter = function () {
+          const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+          this.style.backgroundColor = '#' + randomColor;
+          this.innerHTML = '#' + randomColor;
+        };
+      }
+
+      window.onbeforeunload = function () {
+        return 'Are you sure?';
+      };
+    </script>
+  </body>
+</html>

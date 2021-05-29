@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework_4_1</title>
+  </head>
+  <body>
+    <div id="text">
+      Lorem ipsum dolor sit amet 55555 consectetur adipisicing elit. Fuga
+      deserunt 48961 rerum atque vero soluta error illo, mollitia hic
+      necessitatibus harum 33125 ipsam veniam! Placeat cumque tempore
+      voluptatibus velit quo quasi dolores. Lorem ipsum dolor sit amet
+      255.255.255.255 consectetur adipisicing elit.Lorem ipsum dolor sit amet
+      consectetur adipisicing elit.
+    </div>
+    <script type="text/javascript">
+      const str = document.getElementById('text').innerHTML;
+      let matches;
+
+      // 5 numbers index match
+      let pattern = /\d{5}/g;
+      matches = str.match(pattern);
+      console.log(matches);
+
+      // IP address match
+      pattern = /\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/;
+      matches = str.match(pattern);
+      console.log(matches);
+
+      // Test amount in $
+      let amount = '$1232.84';
+      pattern = /^\$\d+\.\d{1,2}/;
+      console.log(pattern.test(amount));
+
+      // Test Date
+      let date = '30/12/2016';
+      pattern = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+      console.log(pattern.test(date));
+    </script>
+  </body>
+</html>
