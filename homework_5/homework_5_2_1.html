@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework_5_2_1</title>
+    <style>
+      .container {
+        width: 500px;
+      }
+      .content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      p {
+        width: 400px;
+        margin-right: 20px;
+      }
+      input {
+        width: 35px;
+        float: right;
+        font-size: 30px;
+        background-color: rgba(128, 128, 128, 0.678);
+        border: 1px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 3%;
+      }
+      input:hover {
+        box-shadow: 0px 5px 5px rgba(128, 128, 128, 0.39);
+        transform: translateY(-1px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit, mollis etiam
+          posuere ultrices hendrerit quam gravida quis, convallis integer aenean
+          potenti dapibus nulla.
+        </p>
+        <input type="button" value="&times;" />
+      </div>
+      <div class="content">
+        <p>
+          Netus eu curae at consequat tincidunt morbi augue nisl aptent ante
+          enim, cursus facilisis quam nam curabitur sagittis tortor senectus
+          facilisi turpis, dui vestibulum pellentesque quisque ornare eget neque
+          ridiculus integer et. Nulla nisi fermentum netus proin consequat
+          porttitor eu, mus donec risus lacus volutpat sem, mattis maecenas dis
+          tincidunt eleifend diam.
+        </p>
+        <input type="button" value="&times;" />
+      </div>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit, mollis etiam
+          posuere ultrices hendrerit quam gravida quis, convallis integer aenean
+          potenti dapibus nulla.
+        </p>
+        <input type="button" value="&times;" />
+      </div>
+      <div class="content">
+        <p>
+          Netus eu curae at consequat tincidunt morbi augue nisl aptent ante
+          enim, cursus facilisis quam nam curabitur sagittis tortor senectus
+          facilisi turpis, dui vestibulum pellentesque quisque ornare eget neque
+          ridiculus integer et. Nulla nisi fermentum netus proin consequat
+          porttitor eu, mus donec risus lacus volutpat sem, mattis maecenas dis
+          tincidunt eleifend diam.
+        </p>
+        <input type="button" value="&times;" />
+      </div>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit, mollis etiam
+          posuere ultrices hendrerit quam gravida quis, convallis integer aenean
+          potenti dapibus nulla.
+        </p>
+        <input type="button" value="&times;" />
+      </div>
+    </div>
+
+    <script>
+      const container = document.querySelector('.container');
+
+      container.addEventListener('click', handleRemove);
+
+      function handleRemove(e) {
+        let target = e && e.target;
+        let texts = document.querySelectorAll('p');
+
+        if (target.tagName !== 'INPUT') return;
+
+        texts.forEach((text) => {
+          if (text.parentElement === target.parentElement) {
+            text.innerHTML = '';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

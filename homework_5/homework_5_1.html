@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework_5_1</title>
+    <style>
+      .container {
+        width: 40vw;
+        margin: 2% auto;
+      }
+      .link {
+        background-color: rgba(128, 128, 128, 0.541);
+        padding: 2% 1%;
+        border-radius: 4px;
+        font-size: 20px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      span {
+        float: right;
+        display: none;
+      }
+      .content {
+        display: none;
+      }
+      .visible {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="link">
+        <a href="#">Open the content</a>
+        <span class="icon visible">&#8964;</span>
+        <span class="icon">&#8963;</span>
+      </div>
+      <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipiscing elit, mollis etiam
+        posuere ultrices hendrerit quam gravida quis, convallis integer aenean
+        potenti dapibus nulla. Netus eu curae at consequat tincidunt morbi augue
+        nisl aptent ante enim, cursus facilisis quam nam curabitur sagittis
+        tortor senectus facilisi turpis, dui vestibulum pellentesque quisque
+        ornare eget neque ridiculus integer et. Nulla nisi fermentum netus proin
+        consequat porttitor eu, mus donec risus lacus volutpat sem, mattis
+        maecenas dis tincidunt eleifend diam.
+      </div>
+      <input type="button" value="Revome Event Listener" />
+    </div>
+    <script>
+      const link = document.querySelector('.link');
+      const content = document.querySelector('.content');
+      const removeBtn = document.querySelector('input');
+      let chevron = document.querySelectorAll('span');
+
+      link.addEventListener('click', displayContent);
+      removeBtn.addEventListener('click', removeEvent);
+
+      function displayContent() {
+        chevron.forEach((el) => {
+          el.classList.toggle('visible');
+        });
+
+        content.classList.toggle('visible');
+      }
+
+      function removeEvent() {
+        link.removeEventListener('click', displayContent);
+      }
+    </script>
+  </body>
+</html>
