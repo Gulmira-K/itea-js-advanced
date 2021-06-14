@@ -1,0 +1,64 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Polymorphism</title>
+  </head>
+  <body>
+    <script>
+      class Doctor {
+        constructor(name, surname) {
+          this.name = name;
+          this.surname = surname;
+          this.walk = function () {
+            return 'I walk';
+          };
+          this.eat = function () {
+            return 'I eat';
+          };
+          this.drink = function () {
+            return 'I drink';
+          };
+          this.cure = function () {
+            return 'I can cure';
+          };
+        }
+      }
+
+      class Nurse extends Doctor {
+        constructor(name, surname, cure) {
+          super(name, surname, cure);
+        }
+      }
+
+      class Dentist extends Doctor {
+        constructor(name, surname) {
+          super(name, surname);
+          this.cure = function () {
+            return `I'm ${this.name} ${this.surname} and I treat teeth`;
+          };
+        }
+      }
+
+      class Surgeon extends Doctor {
+        constructor(name, surname, cure) {
+          super(name, surname);
+          this.cure = function () {
+            return `I'm ${this.name} ${this.surname} and I perform operations`;
+          };
+        }
+      }
+
+      let nurse = new Nurse('Anna', 'Smith');
+      let dentist = new Dentist('Will', 'Smith');
+      let surgeon = new Surgeon('Max', 'Goodwin');
+
+      console.log(nurse.cure());
+      console.log(dentist.cure());
+      console.log(surgeon.cure());
+      console.log(dentist);
+      console.log(surgeon);
+    </script>
+  </body>
+</html>

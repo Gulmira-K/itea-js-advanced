@@ -1,0 +1,51 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inheritance</title>
+  </head>
+  <body>
+    <script>
+       class Man {
+        constructor(name, surname) {
+          this.name = name;
+          this.surname = surname;
+        }
+        walk() {
+          return 'I walk';
+        }
+        eat() {
+          return 'I eat';
+        }
+        drink() {
+          return 'I drink';
+        }
+      }
+
+      class Soldier extends Man {
+        constructor(name, surname) {
+          super(name, surname);
+        }
+        shoot() {
+          return `I'm ${this.name} ${this.surname} and I shoot`;
+        }
+      }
+
+        class Doctor extends Man {
+          constructor(name, surname) {
+            super(name, surname);
+          }
+          cure() {
+            return `I'm ${this.name} ${this.surname} and I can cure you`;
+          }
+        }
+
+        let soldier = new Soldier('Will', 'Smith');
+        let doctor = new Doctor('Max', 'Goodwin');
+
+        console.log(soldier.shoot());
+        console.log(doctor.cure());
+    </script>
+  </body>
+</html>
