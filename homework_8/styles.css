@@ -1,0 +1,19 @@
+.form {
+  width: 300px;
+  margin: auto;
+  padding: 50px 20px;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: rgb(230, 245, 248);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#confirm {
+  display: none;
+}
+
+input[type='button'] {
+  margin: 3px;
+}
