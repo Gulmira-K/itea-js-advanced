@@ -86,7 +86,7 @@
 
     <script>
       const container = document.querySelector('.container');
-
+      const content = document.querySelector('.content');
       container.addEventListener('click', handleRemove);
 
       function handleRemove(e) {
@@ -97,7 +97,7 @@
 
         texts.forEach((text) => {
           if (text.parentElement === target.parentElement) {
-            text.innerHTML = '';
+            text.parentElement.innerHTML = '';
           }
         });
       }
