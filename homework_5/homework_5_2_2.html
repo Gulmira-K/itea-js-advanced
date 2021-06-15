@@ -17,32 +17,26 @@
           let target = event && event.target;
           let dataToggleId = target.getAttribute('data-tooltip');
 
-          switch (type) {
-            case 'show':
-              {
-                spans.forEach((span) => {
-                  if (dataToggleId === span.getAttribute('data-tooltip')) {
-                    let newSpan = document.createElement('span');
-                    newSpan.className = 'newSpan';
-                    newSpan.innerHTML = dataToggleId;
-                    newSpan.style = 'display: block; color: green';
-                    span.style = 'display: block';
-                    span.insertAdjacentElement('afterend', newSpan);
-                  }
-                });
-              }
-              break;
-            case 'hide':
-              {
-                spans.forEach((span) => {
-                  if (dataToggleId === span.getAttribute('data-tooltip')) {
-                    let newSpan = document.querySelector('.newSpan');
-                    newSpan.remove();
-                  }
-                });
-              }
-              break;
-          }
+          spans.forEach((span) => {
+            switch (type) {
+              case 'show':
+                if (dataToggleId === span.getAttribute('data-tooltip')) {
+                  let newSpan = document.createElement('span');
+                  newSpan.className = 'newSpan';
+                  newSpan.innerHTML = dataToggleId;
+                  newSpan.style = 'display: block; color: green';
+                  span.style = 'display: block';
+                  span.insertAdjacentElement('afterend', newSpan);
+                }
+                break;
+              case 'hide':
+                if (dataToggleId === span.getAttribute('data-tooltip')) {
+                  let newSpan = document.querySelector('.newSpan');
+                  newSpan.remove();
+                }
+                break;
+            }
+          });
         }
       };
     </script>
